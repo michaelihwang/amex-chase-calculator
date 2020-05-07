@@ -4,8 +4,9 @@ import {
   AppBar, Button, Dialog, DialogActions, DialogContent, DialogContentText,
   DialogTitle, IconButton, Link, Toolbar, Typography
 } from '@material-ui/core';
-import CreditCardIcon from '@material-ui/icons/CreditCard';
+import ListIcon from '@material-ui/icons/List';
 import GitHubIcon from '@material-ui/icons/GitHub';
+import CardDrawer from './CardDrawer';
 
 const useStyles = makeStyles((theme) => ({
   link: {
@@ -57,6 +58,15 @@ function AboutDialog({ open, onClose }: AboutDialogProps) {
 
 export default function CompactHeader() {
   const classes = useStyles();
+  const [openDrawer, setOpenDrawer] = useState(false);
+  const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+    if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
+      return;
+    }
+
+    setOpenDrawer(open);
+  };
+  
   const [openDialog, setOpenDialog] = useState(false);
   const handleClickOpen = () => {
     setOpenDialog(true);
@@ -69,9 +79,15 @@ export default function CompactHeader() {
   return (
     <AppBar className={classes.root} color="primary" position="fixed">
       <Toolbar>
-        <IconButton className={classes.menuButton} edge="start" color="inherit">
-          <CreditCardIcon />
+        <IconButton
+          className={classes.menuButton}
+          edge="start"
+          color="inherit"
+          onClick={toggleDrawer(true)}
+        >
+          <ListIcon />
         </IconButton>
+        <CardDrawer open={openDrawer} toggle={toggleDrawer} />
         <Typography className={classes.title} variant="h6">
           Amex vs. Chase
           </Typography>
