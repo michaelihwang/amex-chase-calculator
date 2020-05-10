@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid } from '@material-ui/core';
-import {Context} from '../Store';
 import CardContainer from '../components/CardContainer';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,29 +12,25 @@ const useStyles = makeStyles((theme) => ({
 
 export default function CalculatorBody() {
   const [isFormComplete, setIsFormComplete] = useState(false);
-  const [state, dispatch] = useContext(Context);
-  dispatch({type: 'SET_DINING_EXPENSE', payload: 2});
-  console.log("STATE: ", state);
   const classes = useStyles();
-  return ( 
+  return (
     <Box className={classes.root}>
       <Grid container direction="column" spacing={3}>
         <Grid item xs={12}>
           <CardContainer headerText={isFormComplete ? 'Summary' : 'Introduction'}>
-            
-           </CardContainer>
+          </CardContainer>
         </Grid>
         <Grid item xs={12}>
           <CardContainer headerText="Annual Spend">
-           </CardContainer>
+          </CardContainer>
         </Grid>
         <Grid item xs={12}>
           <CardContainer headerText="Card Benefits Valuation">
-            </CardContainer>
+          </CardContainer>
         </Grid>
         <Grid item xs={12}>
           <CardContainer headerText="MR/UR Points Valuation">
-            </CardContainer>
+          </CardContainer>
         </Grid>
       </Grid>
     </Box>

@@ -1,5 +1,5 @@
 import React from 'react';
-import Store from './Store';
+import StoreProvider from './Store';
 import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
 
 import CompactHeader from './components/CompactHeader';
@@ -21,11 +21,11 @@ const theme = createMuiTheme({
 
 export default function App() {
   return (
-    <Store>
+    <StoreProvider>
       <ThemeProvider theme={theme}>
         <CompactHeader />
         <LandingView />
       </ThemeProvider>
-    </Store>
+    </StoreProvider>
   );
 }
