@@ -8,7 +8,8 @@ const useStyles = makeStyles((theme) => ({
     color: '#000000',
     borderRadius: 10,
     flexGrow: 1,
-    height: 300,
+    minHeight: 300,
+    height: "auto",
     padding: 10,
   },
 }));
