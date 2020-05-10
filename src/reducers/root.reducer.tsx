@@ -6,7 +6,7 @@ export interface AppState {
   trifectaValuation: TrifectaValuationState;
   annualExpenses: AnnualExpensesState;
   benefitsValuation: BenefitsValuationState
-};
+}
 
 export interface Action {
   type: string;
@@ -47,7 +47,7 @@ function rootReducer(state: AppState = initialState, action: Action): AppState {
     trifectaValuation: trifectaValuationReducer(state.trifectaValuation, action),
     annualExpenses: annualExpensesReducer(state.annualExpenses, action),
     benefitsValuation: benefitsValuationReducer(state.benefitsValuation, action)
-  }
+  };
 }
 
 export default rootReducer;

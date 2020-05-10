@@ -2,5 +2,5 @@ export function updateObjectSubproperty(state: { [key: string]: any }, property:
   return {
     ...state,
     [property]: { ...state[property], [subproperty]: value }
-  }
+  };
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 import StoreProvider from './Store';
-import { createMuiTheme, ThemeProvider } from "@material-ui/core/styles";
+import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import CompactHeader from './components/CompactHeader';
 import LandingView from './views/LandingView';
@@ -15,7 +15,7 @@ const theme = createMuiTheme({
     },
   },
   typography: {
-    fontFamily: ['Open Sans'].join(","),
+    fontFamily: ['Open Sans'].join(','),
   }
 });
 

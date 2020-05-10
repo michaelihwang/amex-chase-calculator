@@ -4,8 +4,8 @@ import { Paper, Typography } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    backgroundColor: "#F6F6F6F6",
-    color: "#000000",
+    backgroundColor: '#F6F6F6F6',
+    color: '#000000',
     borderRadius: 10,
     flexGrow: 1,
     minHeight: 300,

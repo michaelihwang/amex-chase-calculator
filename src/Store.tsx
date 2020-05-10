@@ -15,13 +15,13 @@ function StoreProvider({ children }: StoreProps) {
         {children}
       </AppDispatchContext.Provider>
     </AppStateContext.Provider>
-  )
+  );
 }
 
 export function useAppState(): AppState {
   const context = useContext(AppStateContext);
   if (context == null) {
-    throw new Error("useAppState must be used within a AppStateProvider");
+    throw new Error('useAppState must be used within a AppStateProvider');
   }
   return context;
 }
@@ -29,7 +29,7 @@ export function useAppState(): AppState {
 export function useAppDispatch(): Dispatch<Action> {
   const context = useContext(AppDispatchContext);
   if (context == null) {
-    throw new Error("useAppDispatch must be used within a AppDispatchProvider");
+    throw new Error('useAppDispatch must be used within a AppDispatchProvider');
   }
   return context;
 }
