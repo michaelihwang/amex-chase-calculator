@@ -1,4 +1,5 @@
 import { Action } from './root.reducer';
+import { updateObjectSubproperty } from './reducerUtils';
 
 interface BenefitsValuation {
   credits: number;
@@ -30,11 +31,6 @@ function reducer(state: BenefitsValuationState, action: Action): BenefitsValuati
   }
 }
 
-function updateObjectSubproperty(state: { [key: string]: any }, property: string, subproperty: string, value: any): any {
-  return {
-    ...state,
-    [property]: { ...state[property], [subproperty]: value }
-  }
-}
+
 
 export default reducer;
