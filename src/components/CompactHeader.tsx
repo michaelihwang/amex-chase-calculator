@@ -11,7 +11,7 @@ import CardDrawer from './CardDrawer';
 
 const useStyles = makeStyles((theme) => ({
   dialogContainer: {
-    backgroundColor: "#F6F6F6F6",
+    backgroundColor: '#F6F6F6F6',
     borderRadius: 10,
   },
   link: {

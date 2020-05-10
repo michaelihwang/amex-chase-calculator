@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Typography } from '@material-ui/core';
 import CardContainer from '../components/CardContainer';
@@ -37,6 +37,7 @@ export default function CalculatorBody() {
         </Grid>
         <Grid item xs={12}>
           <CardContainer headerText="Annual Spend">
+            { /* form for text input */}
           </CardContainer>
         </Grid>
         <Grid item xs={12}>

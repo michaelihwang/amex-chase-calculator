@@ -29,7 +29,7 @@ export default function CardDrawer({ open, toggle }: CardDrawerProps) {
       <Box
         className={clsx(classes.list)}
         role="presentation"
-        onClick={() => { console.log('hello') }}
+        onClick={() => { console.log('hello'); }}
         onKeyDown={toggle(false)}
       >
         <List>
