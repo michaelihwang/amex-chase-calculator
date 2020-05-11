@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Grid, Typography } from '@material-ui/core';
-import { useAppState } from '../Store';
+import { useAppContext } from '../Store';
 import CardContainer from '../components/CardContainer';
 import SliderContainer from '../components/SliderContainer';
+import { getActionTypeFromAnnualExpenseStatePropertyName } from "../reducers/annualExpenses.reducer";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,7 +22,18 @@ const useStyles = makeStyles((theme) => ({
 export default function CalculatorBody() {
   const [isFormComplete, setIsFormComplete] = useState(false);
   const classes = useStyles();
-  const appState = useAppState();
+  const { appState, dispatch } = useAppContext();
+
+  function onAnnualExpensesChange(statePropertyName: string, event: any, value: number | number[]): void {
+    if (event == null) {
+      return;
+    }
+    const actionType = getActionTypeFromAnnualExpenseStatePropertyName(statePropertyName);
+    if (actionType == null) {
+      return;
+    }
+    dispatch({ type: actionType, payload: value });
+  }
   // TODO: Color the valuation numbers red/green depending if they're pos/neg
   return (
     <Box className={classes.root}>
@@ -41,12 +53,55 @@ export default function CalculatorBody() {
         </Grid>
         <Grid item xs={12}>
           <CardContainer headerText="Annual Spend">
-            <SliderContainer headerText="Dining" defaultValue={appState.annualExpenses.dining} max={15000} />
-            <SliderContainer headerText="Groceries" defaultValue={appState.annualExpenses.dining} max={15000} />
-            <SliderContainer headerText="Flights" defaultValue={appState.annualExpenses.dining} max={15000} />
-            <SliderContainer headerText="Hotels" defaultValue={appState.annualExpenses.dining} max={15000} />
-            <SliderContainer headerText="Other Travel" defaultValue={appState.annualExpenses.dining} max={15000} />
-            <SliderContainer headerText="All Other Annual Expenses" defaultValue={appState.annualExpenses.dining} max={15000} />
+            <SliderContainer
+              headerText="Dining"
+              defaultValue={0}
+              max={15000}
+              value={appState.annualExpenses.dining}
+              onChange={onAnnualExpensesChange.bind(null, 'dining')}
+            />
+            <SliderContainer
+              headerText="Groceries"
+              defaultValue={0}
+              max={15000}
+              value={appState.annualExpenses.groceries}
+              onChange={onAnnualExpensesChange.bind(null, 'groceries')}
+            />
+            <SliderContainer
+              headerText="Flights"
+              defaultValue={0}
+              max={15000}
+              value={appState.annualExpenses.flights}
+              onChange={onAnnualExpensesChange.bind(null, 'flights')}
+            />
+            <SliderContainer
+              headerText="Hotels"
+              defaultValue={0}
+              max={15000}
+              value={appState.annualExpenses.hotels}
+              onChange={onAnnualExpensesChange.bind(null, 'hotels')}
+            />
+            <SliderContainer
+              headerText="Hotels Booked Through Amex"
+              defaultValue={0}
+              max={15000}
+              value={appState.annualExpenses.hotelsBookedThroughAmex}
+              onChange={onAnnualExpensesChange.bind(null, 'hotelsBookedThroughAmex')}
+            />
+            <SliderContainer
+              headerText="Other Travel"
+              defaultValue={0}
+              max={10000}
+              value={appState.annualExpenses.nonFlightHotelTravel}
+              onChange={onAnnualExpensesChange.bind(null, 'nonFlightHotelTravel')}
+            />
+            <SliderContainer
+              headerText="All Other Annual Expenses"
+              defaultValue={0}
+              max={20000}
+              value={appState.annualExpenses.other}
+              onChange={onAnnualExpensesChange.bind(null, 'other')}
+            />
           </CardContainer>
         </Grid>
         <Grid item xs={12}>

@@ -6,12 +6,17 @@ import Slider from '@material-ui/core/Slider';
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: '80%'
+    width: '80%',
+    marginBottom: 100,
   },
   header: {
     marginTop: 30,
-    marginBottom: 50,
+    marginBottom: 10,
     marginLeft: -30
+  },
+  valueText: {
+    textAlign: 'center',
+    marginBottom: 40,
   }
 }));
 
@@ -33,21 +38,27 @@ interface SliderContainerProps {
   headerText: string;
   defaultValue: number;
   max: number;
+  onChange: ((event: React.ChangeEvent<{}>, value: number | number[]) => void);
+  value: number;
 }
 
-export default function SliderContainer({ headerText, defaultValue, max }: SliderContainerProps) {
+export default function SliderContainer({ headerText, defaultValue, max, onChange, value }: SliderContainerProps) {
+
   const classes = useStyles();
   return (
     <Container className={classes.root}>
       <Typography variant="h5" className={classes.header} gutterBottom>{headerText}</Typography>
+      <Typography variant="h5" className={classes.valueText} gutterBottom>${value}</Typography>
       <Slider
         defaultValue={defaultValue}
         step={10}
-        valueLabelDisplay="on"
+        valueLabelDisplay="auto"
         min={0}
         max={max}
         marks={generateMarksEveryThousand(max)}
+        value={value}
+        onChange={onChange}
       />
     </Container>
-  )
-};
+  );
+}
