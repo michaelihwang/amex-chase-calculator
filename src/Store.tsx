@@ -35,7 +35,7 @@ export function useAppDispatch(): Dispatch<Action> {
 }
 
 export function useAppContext() {
-  return { state: useAppState(), dispatch: useAppDispatch() };
+  return { appState: useAppState(), dispatch: useAppDispatch() };
 }
 
 export default StoreProvider;

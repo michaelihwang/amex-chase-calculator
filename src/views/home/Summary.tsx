@@ -1,7 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Typography } from '@material-ui/core';
-import { useAppState } from '../../Store';
+import { useAppContext } from '../../Store';
 import CardContainer from '../../components/CardContainer';
 
 const useStyles = makeStyles((theme) => ({
@@ -13,7 +13,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function AnnualSpending() {
   const classes = useStyles();
-  const { trifectaValuation } = useAppState();
+  const { appState, dispatch } = useAppContext();
+  const { trifectaValuation } = appState;
   // TODO: Color the valuation numbers red/green depending if they're pos/neg
   return (
     <CardContainer>

@@ -39,7 +39,7 @@ export default function LandingView() {
     <Box className={classes.root}>
       <Grid
         container
-        direction="column"
+        direction="row"
         justify="center"
         alignItems="center"
         spacing={3}
@@ -59,16 +59,14 @@ export default function LandingView() {
         <Grid item xs={CARD_CONTAINER_FLEX}>
           <PointsValuation />
         </Grid>
-        <Grid item xs={CARD_CONTAINER_FLEX}>
-          <Button
-            className={classes.submitButton}
-            variant="contained"
-            color="primary"
-            onClick={handleSubmitClicked}
-          >
-            Submit
-          </Button>
-        </Grid>
+        <Button
+          className={classes.submitButton}
+          variant="contained"
+          color="primary"
+          onClick={handleSubmitClicked}
+        >
+          Submit
+        </Button>
       </Grid>
     </Box>
   );

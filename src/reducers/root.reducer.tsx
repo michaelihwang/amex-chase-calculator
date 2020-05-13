@@ -24,6 +24,7 @@ export const initialState: AppState = {
     groceries: 3000,
     flights: 1000,
     hotels: 1000,
+    hotelsBookedThroughAmex: 1000,
     nonFlightHotelTravel: 1000,
     other: 3000,
     freedomCategories: 2500,
