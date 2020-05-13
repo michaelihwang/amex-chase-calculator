@@ -1,11 +1,10 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid } from '@material-ui/core';
-import CardContainer from '../../components/CardContainer';
 
 // Cards
 import Summary from './Summary';
-import AnnualSpend from './AnnualSpend';
+import AnnualExpenses from './AnnualExpenses';
 import AmExBenefits from './AmExBenefits';
 import ChaseBenefits from './ChaseBenefits';
 import PointsValuation from './PointsValuation';
@@ -48,7 +47,7 @@ export default function LandingView() {
           <Summary />
         </Grid>
         <Grid item xs={CARD_CONTAINER_FLEX}>
-          <AnnualSpend />
+          <AnnualExpenses />
         </Grid>
         <Grid item xs={CARD_CONTAINER_FLEX}>
           <AmExBenefits />
