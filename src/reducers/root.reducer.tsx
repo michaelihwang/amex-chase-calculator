@@ -24,7 +24,7 @@ export const initialState: AppState = {
     groceries: 0,
     flights: 0,
     hotels: 0,
-    amexHotels: 0,
+    hotelsBookedThroughAmex: 0,
     nonFlightHotelTravel: 0,
     other: 0,
   },
