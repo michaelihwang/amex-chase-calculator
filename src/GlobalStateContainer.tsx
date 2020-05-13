@@ -1,17 +1,6 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { createContainer } from 'unstated-next';
-
-export enum TotalAnnualFees {
-  Amex = 550 + 250,
-  Chase = 550,
-  NoAF = 0,
-}
-
-export interface TrifectaValuationState {
-  amex: number,
-  chase: number,
-  noAF: number,
-}
+import { calculateAmexTrifecta, calculateChaseTrifecta, calculateNoAF } from './controller/calculator'
 
 export interface AnnualExpensesState {
   dining: number;
@@ -55,13 +44,13 @@ export interface PointsValuationState {
   chaseCPP: number;
 }
 
-function useGlobalStateContainer() {
-  const [trifectaValuation, setTrifectaValuation] = useState<TrifectaValuationState>({
-    amex: 0,
-    chase: 0,
-    noAF: 0,
-  });
+export interface TrifectaValuationState {
+  amex: number,
+  chase: number,
+  noAF: number,
+}
 
+function useGlobalStateContainer() {
   const [annualExpenses, setAnnualExpenses] = useState<AnnualExpensesState>({
     dining: 3000,
     groceries: 3000,
@@ -98,12 +87,26 @@ function useGlobalStateContainer() {
     chaseCPP: 1.5,
   });
 
+  // Calculate here
+  const [trifectaValuation, setTrifectaValuation] = useState<TrifectaValuationState>({
+    amex: 0,
+    chase: 0,
+    noAF: 0,
+  });
+  useEffect(() => {
+    setTrifectaValuation({
+      amex: calculateAmexTrifecta(annualExpenses, amexBenefits, pointsValuation.amexCPP),
+      chase: calculateChaseTrifecta(annualExpenses, chaseBenefits, pointsValuation.chaseCPP),
+      noAF: calculateNoAF(annualExpenses),
+    });
+  }, [annualExpenses, amexBenefits, chaseBenefits, pointsValuation]);
+
   return {
-    trifectaValuation, setTrifectaValuation,
     annualExpenses, setAnnualExpenses,
     amexBenefits, setAmexBenefits,
     chaseBenefits, setChaseBenefits,
     pointsValuation, setPointsValuation,
+    trifectaValuation, setTrifectaValuation,
   };
 }
 
