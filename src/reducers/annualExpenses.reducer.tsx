@@ -5,9 +5,9 @@ export interface AnnualExpensesState {
   groceries: number;
   flights: number;
   hotels: number;
-  amexHotels: number;
   nonFlightHotelTravel: number;
   other: number;
+  freedomCategories: number;
 }
 
 function reducer(state: AnnualExpensesState, action: Action): AnnualExpensesState {
@@ -31,11 +31,6 @@ function reducer(state: AnnualExpensesState, action: Action): AnnualExpensesStat
     return {
       ...state,
       hotels: action.payload
-    };
-  case 'SET_HOTELS_BOOKED_THROUGH_AMEX':
-    return {
-      ...state,
-      amexHotels: action.payload
     };
   case 'SET_NON_FLIGHT_HOTEL_TRAVEL_EXPENSE':
     return {

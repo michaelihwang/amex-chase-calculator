@@ -20,26 +20,35 @@ export const initialState: AppState = {
     maxCashback: 0,
   },
   annualExpenses: {
-    dining: 0,
-    groceries: 0,
-    flights: 0,
-    hotels: 0,
-    amexHotels: 0,
-    nonFlightHotelTravel: 0,
-    other: 0,
+    dining: 3000,
+    groceries: 3000,
+    flights: 1000,
+    hotels: 1000,
+    nonFlightHotelTravel: 1000,
+    other: 3000,
+    freedomCategories: 2500,
   },
   benefitsValuation: {
     amex: {
-      credits: 0,
-      perks: 0,
-      centsPerPoint: 0,
+      uberCredit: 0,
+      airlineIncidentalPlat: 0,
+      saksCredit: 0,
+      tsaGlobalEntryCredit: 0,
+      loungeAccess: 0,
+      hotelStatus: 0,
+      diningCredit: 0,
+      airlineIncidentalGold: 0,
     },
     chase: {
-      credits: 0,
-      perks: 0,
-      centsPerPoint: 0
+      travelCredit: 300,
+      tsaGlobalEntryCredit: 0,
+      loungeAccess: 0,
+      doorDashPass: 0,
+      doorDashCredit:0,
+      lyftPink: 0,
     }
-  }
+  },
+  
 };
 
 function rootReducer(state: AppState = initialState, action: Action): AppState {

@@ -3,7 +3,7 @@ import StoreProvider from './Store';
 import { createMuiTheme, ThemeProvider } from '@material-ui/core/styles';
 
 import CompactHeader from './components/CompactHeader';
-import LandingView from './views/LandingView';
+import LandingView from './views/home/LandingView';
 
 const theme = createMuiTheme({
   palette: {
