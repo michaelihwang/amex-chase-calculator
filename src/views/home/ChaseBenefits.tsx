@@ -1,56 +1,83 @@
 import React from 'react';
 import { Typography } from '@material-ui/core';
-import { useAppContext } from '../../Store';
+import { GlobalStateContainer } from '../../GlobalStateContainer';
+
 import CardContainer from '../../components/CardContainer';
 import SliderContainer from '../../components/SliderContainer';
 
+enum ChasePerks {
+  TravelCredit = 'travelCredit',
+  TSAGlobalEntryCredit = 'tsaGlobalEntryCredit',
+  LoungeAccess = 'loungeAccess',
+  DoorDashPass = 'doorDashPass',
+  DoorDashCredit = 'doorDashCredit',
+  LyftPink = 'lyftPink',
+}
+
 export default function ChaseBenefits() {
-  const { appState, dispatch } = useAppContext();
-  const { benefitsValuation } = appState;
+  const { chaseBenefits, setChaseBenefits, } = GlobalStateContainer.useContainer();
+
+  const handleSliderChange = (newValue: number, category: ChasePerks) => {
+    setChaseBenefits({
+      ...chaseBenefits, [category]: newValue,
+    });
+  };
+
   return (
     <CardContainer>
       <Typography color="secondary" variant="h6">{'Chase Benefits Valuation'}</Typography>
       <SliderContainer
         headerText="Travel Credit ($300)"
-        defaultValue={benefitsValuation.chase.travelCredit}
         max={300}
-        value={benefitsValuation.chase.travelCredit}
-        onChange={() => {}}
+        value={chaseBenefits.travelCredit}
+        onChange={(event, newValue) => {
+          handleSliderChange(newValue as number, ChasePerks.TravelCredit);
+        }}
       />
       <SliderContainer
         headerText="TSA/Global Entry Credit ($100)"
-        defaultValue={benefitsValuation.chase.tsaGlobalEntryCredit}
+        defaultValue={100}
         max={100}
-        value={benefitsValuation.chase.tsaGlobalEntryCredit}
-        onChange={() => { }}
+        value={chaseBenefits.tsaGlobalEntryCredit}
+        onChange={(event, newValue) => {
+          handleSliderChange(newValue as number, ChasePerks.TSAGlobalEntryCredit);
+        }}
       />
       <SliderContainer
         headerText="Priority Pass Lounge Access"
-        defaultValue={benefitsValuation.chase.loungeAccess}
+        defaultValue={100}
         max={100}
-        value={benefitsValuation.chase.loungeAccess}
-        onChange={() => { }}
+        value={chaseBenefits.loungeAccess}
+        onChange={(event, newValue) => {
+          handleSliderChange(newValue as number, ChasePerks.LoungeAccess);
+        }}
       />
       <SliderContainer
         headerText="Complementary DashPass ($9.99/mo)"
-        defaultValue={benefitsValuation.chase.doorDashPass}
+        defaultValue={120}
         max={120}
-        value={benefitsValuation.chase.doorDashPass}
-        onChange={() => { }}
+        value={chaseBenefits.doorDashPass}
+        onChange={(event, newValue) => {
+          handleSliderChange(newValue as number, ChasePerks.DoorDashPass);
+        }}
       />
       <SliderContainer
         headerText="DoorDash Credit ($60)"
-        defaultValue={benefitsValuation.chase.doorDashCredit}
+        defaultValue={60}
         max={60}
-        value={benefitsValuation.chase.doorDashCredit}
-        onChange={() => { }}
+        value={chaseBenefits.doorDashCredit}
+        onChange={(event, newValue) => {
+          handleSliderChange(newValue as number, ChasePerks.DoorDashCredit);
+        }}
       />
       <SliderContainer
         headerText="LyftPink"
-        defaultValue={benefitsValuation.chase.lyftPink}
+        defaultValue={100}
         max={100}
-        value={benefitsValuation.chase.lyftPink}
-        onChange={() => { }}
+        value={chaseBenefits.lyftPink}
+        onChange={(event, newValue) => {
+          handleSliderChange(newValue as number, ChasePerks.LyftPink);
+        }}
       />
     </CardContainer>
   );

@@ -37,7 +37,7 @@ function generateMarksEveryThousand(max: number) {
 
 interface SliderContainerProps {
   headerText: string;
-  defaultValue: number;
+  defaultValue?: number;
   step?: number;
   max: number;
   onChange: ((event: React.ChangeEvent<{}>, value: number | number[]) => void);
