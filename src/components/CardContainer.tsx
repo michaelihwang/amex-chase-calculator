@@ -1,6 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { Paper, Typography } from '@material-ui/core';
+import { Paper } from '@material-ui/core';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -9,21 +9,19 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 10,
     flexGrow: 1,
     minHeight: 300,
-    height: "auto",
+    height: 'auto',
     padding: 10,
   },
 }));
 
 interface CardContainerProps {
-  headerText: string;
   children?: React.ReactNode;
 }
 
-export default function CardContainer({ headerText, children }: CardContainerProps) {
+export default function CardContainer({ children }: CardContainerProps) {
   const classes = useStyles();
   return (
     <Paper className={classes.root}>
-      <Typography color="secondary" variant="h6">{headerText}</Typography>
       {children}
     </Paper>
   );
