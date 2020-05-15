@@ -85,6 +85,7 @@ export default function CompactHeader() {
   return (
     <AppBar className={classes.root} color="primary" position="fixed">
       <Toolbar>
+        {/*
         <IconButton
           className={classes.menuButton}
           edge="start"
@@ -93,9 +94,10 @@ export default function CompactHeader() {
         >
           <ListIcon />
         </IconButton>
+        */}
         <CardDrawer open={openDrawer} toggle={toggleDrawer} />
         <Typography className={classes.title} variant="h6">
-          {windowSize.width < 600 ? 'CC Setup Calc' : 'Credit Card Setup Calculator'}
+          CreditHack
         </Typography>
         <Button color="inherit" onClick={handleClickOpen}>
           About

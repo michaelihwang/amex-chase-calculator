@@ -10,8 +10,11 @@ enum ExpenseCategory {
   Groceries = 'groceries',
   Flights = 'flights',
   Hotels = 'hotels',
+  Gas = 'gas',
   LyftRides = 'lyftRides',
   NonFlightHotelTravel = 'nonFlightHotelTravel',
+  SteamingServices = 'streamingServices',
+  OnlineShopping = 'onlineShopping',
   Other = 'other',
   FreedomCategories = 'freedomCategories'
 }
@@ -61,6 +64,14 @@ export default function AnnualExpenses() {
         }}
       />
       <SliderContainer
+        headerText="Gas"
+        max={15000}
+        value={annualExpenses.gas}
+        onChange={(event, newValue) => {
+          handleSliderChange(newValue as number, ExpenseCategory.Gas);
+        }}
+      />
+      <SliderContainer
         headerText="Lyft Rides"
         max={15000}
         value={annualExpenses.lyftRides}
@@ -74,6 +85,22 @@ export default function AnnualExpenses() {
         value={annualExpenses.nonFlightHotelTravel}
         onChange={(event, newValue) => {
           handleSliderChange(newValue as number, ExpenseCategory.NonFlightHotelTravel);
+        }}
+      />
+      <SliderContainer
+        headerText="Streaming Services"
+        max={15000}
+        value={annualExpenses.streamingServices}
+        onChange={(event, newValue) => {
+          handleSliderChange(newValue as number, ExpenseCategory.SteamingServices);
+        }}
+      />
+      <SliderContainer
+        headerText="Online Shopping"
+        max={15000}
+        value={annualExpenses.onlineShopping}
+        onChange={(event, newValue) => {
+          handleSliderChange(newValue as number, ExpenseCategory.OnlineShopping);
         }}
       />
       <SliderContainer
