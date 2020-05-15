@@ -46,7 +46,7 @@ export function calculateAmexTrifecta(expenses: AnnualExpensesState, benefits: A
  * Chase Trifecta Calculator (3 Cards)
  *
  * Chase Sapphire Reserve - 3x dining, travel
- * Chase Freedom - 5x rotating quarterly categories up to $1.5/quarter
+ * Chase Freedom - 5x rotating quarterly categories up to $1.5k/quarter
  * Chase Freedom Unlimited - 1.5x all purchases
  */
 export function calculateChaseTrifecta(expenses: AnnualExpensesState, benefits: ChaseBenefitsState, cpp: number): number {
@@ -70,7 +70,7 @@ export function calculateChaseTrifecta(expenses: AnnualExpensesState, benefits: 
  * Wells Fargo Propel - 3% dining, gas, travel, streaming services
  * Amex Blue Cash Everryday - 3% groceries up to $6k/annually
  * Bank of America Cash Rewards - 3% category up to $2.5k/quarter (currently set as online shopping, but make it flexible later)
- * Chase Freedom - 5% rotating quarterly categories up to $1.5/quarter
+ * Chase Freedom - 5% rotating quarterly categories up to $1.5k/quarter
  * Citi Double Cash - 2% everything
  */
 export function calculateNoAF(expenses: AnnualExpensesState): number {

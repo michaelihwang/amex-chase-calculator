@@ -83,9 +83,9 @@ function useGlobalStateContainer() {
     travelCredit: 300,
     tsaGlobalEntryCredit: 85,
     loungeAccess: 50,
-    doorDashPass: 60,
+    doorDashPass: 0,
     doorDashCredit: 30,
-    lyftPink: 60,
+    lyftPink: 0,
   });
 
   const [pointsValuation, setPointsValuation] = useState<PointsValuationState>({
