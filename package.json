@@ -23,11 +23,13 @@
     "unstated-next": "^1.1.0"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
+    "start": "serve -s build",
+    "dev": "react-scripts start",
+    "build": "GENERATE_SOURCEMAP=false react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix"
+    "lint": "eslint '*/**/*.{js,ts,tsx}' --quiet --fix",
+    "heroku-prebuild": "rm -rf package-lock.json node_modules"
   },
   "eslintConfig": {
     "extends": "react-app"
