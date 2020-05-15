@@ -7,8 +7,11 @@ export interface AnnualExpensesState {
   groceries: number;
   flights: number;
   hotels: number;
+  gas: number;
   lyftRides: number;
   nonFlightHotelTravel: number;
+  streamingServices: number;
+  onlineShopping: number;
   other: number;
   freedomCategories: number;
 }
@@ -56,9 +59,12 @@ function useGlobalStateContainer() {
     groceries: 3000,
     flights: 1000,
     hotels: 1000,
+    gas: 1200,
     lyftRides: 500,
     nonFlightHotelTravel: 1000,
-    other: 3000,
+    streamingServices: 40 * 12,
+    onlineShopping: 1500,
+    other: 1500,
     freedomCategories: 2500,
   });
 
