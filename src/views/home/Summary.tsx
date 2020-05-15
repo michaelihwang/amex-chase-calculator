@@ -39,16 +39,19 @@ export default function AnnualSpending() {
         })}
       </Typography>
       <Typography variant="h6" className={classes.summaryTrifectaHeader} gutterBottom>
-        Maximum Cashback Setup: {trifectaValuation.noAF.toLocaleString('en-US', {
+        No Annual Fee Cashback Setup: {trifectaValuation.noAF.toLocaleString('en-US', {
           style: 'currency',
           currency: 'USD'
         })}
       </Typography>
       <Typography variant="h6" className={classes.summaryTrifectaHeader} gutterBottom>
-        {trifectaValuation.amex > trifectaValuation.chase ? (
-          `You get ${trifectaDifference(trifectaValuation.amex, trifectaValuation.chase)} more from the Amex Trifecta Setup!`
-        ) : (
-          `You get ${trifectaDifference(trifectaValuation.chase, trifectaValuation.amex)} more from the Chase Trifecta Setup!`
+        {trifectaValuation.amex > trifectaValuation.noAF && trifectaValuation.chase > trifectaValuation.noAF ? (
+          (trifectaValuation.amex > trifectaValuation.chase) ? (
+            `You get ${trifectaDifference(trifectaValuation.amex, trifectaValuation.chase)} more from the Amex Trifecta than the Chase Trifecta!`
+          ) : (
+            `You get ${trifectaDifference(trifectaValuation.chase, trifectaValuation.amex)} more from the Chase Trifecta than the Amex Trifecta!`
+          )) : (
+          'You\'re better off with the No Annual Fee Cashback Setup!'
         )}
       </Typography>
     </CardContainer>
