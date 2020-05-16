@@ -1,8 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
+import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
 import Slider from '@material-ui/core/Slider';
+import OutlinedInput from '@material-ui/core/OutlinedInput';
+import InputAdornment from '@material-ui/core/InputAdornment';
 import useWindowSize from '../hooks/useWindowSize';
 
 const useStyles = makeStyles((theme) => ({
@@ -15,9 +19,20 @@ const useStyles = makeStyles((theme) => ({
     marginBottom: 10,
     marginLeft: -30
   },
+  valueTextContainer: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginBottom: 40
+  },
   valueText: {
-    textAlign: 'center',
-    marginBottom: 40,
+    marginBottom: 0,
+    marginRight: 30
+  },
+  textInput: {
+    marginRight: 30,
+    fontSize: '1.5rem',
+    width: '35%'
   }
 }));
 
@@ -46,13 +61,39 @@ interface SliderContainerProps {
 }
 
 export default function SliderContainer({ headerText, defaultValue, step, max, onChange, value, ccp }: SliderContainerProps) {
-
   const classes = useStyles();
   const windowSize = useWindowSize();
+  const [isTextInputEnabled, setTextInputVisibility] = useState(false);
+
+  function showTextInput() {
+    setTextInputVisibility(true);
+  }
+
+  function hideTextInput() {
+    setTextInputVisibility(false);
+  }
+
+  function handleTextInputChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
+    onChange(event, parseInt(event.currentTarget.value));
+  }
+
   return (
     <Container className={classes.root}>
       <Typography variant="h6" className={classes.header} gutterBottom>{headerText}</Typography>
-      <Typography variant="h5" className={classes.valueText} gutterBottom>{`${ccp ? '' : '$'}${value} ${ccp ? 'cents/point' : ''}`}</Typography>
+      {!isTextInputEnabled ?
+        <Box className={classes.valueTextContainer}>
+          <Typography variant="h5" className={classes.valueText} gutterBottom >
+            {`${ccp ? '' : '$'}${value} ${ccp ? 'cents/point' : ''}`}
+          </Typography>
+          <Button variant="outlined" onClick={showTextInput}>EDIT</Button>
+        </Box>
+        : 
+        <Box className={classes.valueTextContainer}>
+          <OutlinedInput className={classes.textInput} value={value} onChange={handleTextInputChange} startAdornment={<InputAdornment position="start">$</InputAdornment>} />
+          <Button variant="outlined" color="primary" onClick={hideTextInput}>DONE</Button>
+        </Box>
+      }
+
       <Slider
         defaultValue={defaultValue}
         step={step !== undefined ? step : 10}
