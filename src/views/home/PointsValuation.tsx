@@ -20,6 +20,7 @@ export default function PointsValuation() {
           ...pointsValuation, amexCPP: newValue as number
         }); }}
         ccp
+        useDollarAdornment={false}
       />
       <SliderContainer
         headerText="Cent Per Point value of Chase UR"
@@ -32,6 +33,7 @@ export default function PointsValuation() {
           });
         }}
         ccp
+        useDollarAdornment={false}
       />
     </CardContainer>
   );

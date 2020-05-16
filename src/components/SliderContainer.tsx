@@ -32,8 +32,8 @@ const useStyles = makeStyles((theme) => ({
   textInput: {
     marginRight: 30,
     fontSize: '1.5rem',
-    width: '35%'
-  }
+    maxWidth: 114,
+  },
 }));
 
 function generateMarksEveryThousand(max: number) {
@@ -57,10 +57,11 @@ interface SliderContainerProps {
   max: number;
   onChange: ((event: React.ChangeEvent<{}>, value: number | number[]) => void);
   value: number;
-  ccp?: boolean
+  ccp?: boolean;
+  useDollarAdornment?: boolean; // Defaults to true
 }
 
-export default function SliderContainer({ headerText, defaultValue, step, max, onChange, value, ccp }: SliderContainerProps) {
+export default function SliderContainer({ headerText, defaultValue, step, max, onChange, value, ccp, useDollarAdornment = true }: SliderContainerProps) {
   const classes = useStyles();
   const windowSize = useWindowSize();
   const [isTextInputEnabled, setTextInputVisibility] = useState(false);
@@ -74,7 +75,7 @@ export default function SliderContainer({ headerText, defaultValue, step, max, o
   }
 
   function handleTextInputChange(event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) {
-    onChange(event, parseInt(event.currentTarget.value));
+    onChange(event, parseFloat(event.currentTarget.value));
   }
 
   return (
@@ -89,7 +90,17 @@ export default function SliderContainer({ headerText, defaultValue, step, max, o
         </Box>
         : 
         <Box className={classes.valueTextContainer}>
-          <OutlinedInput className={classes.textInput} value={value} onChange={handleTextInputChange} startAdornment={<InputAdornment position="start">$</InputAdornment>} />
+          <OutlinedInput 
+            className={classes.textInput} 
+            value={value} 
+            onChange={handleTextInputChange} 
+            startAdornment={
+              useDollarAdornment ? 
+                <InputAdornment position="start">$</InputAdornment> 
+                : 
+                null
+            } 
+          />
           <Button variant="outlined" color="primary" onClick={hideTextInput}>DONE</Button>
         </Box>
       }
