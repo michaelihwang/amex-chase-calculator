@@ -88,18 +88,18 @@ export default function SliderContainer({ headerText, defaultValue, step, max, o
           </Typography>
           <Button variant="outlined" onClick={showTextInput}>EDIT</Button>
         </Box>
-        : 
+        :
         <Box className={classes.valueTextContainer}>
-          <OutlinedInput 
-            className={classes.textInput} 
-            value={value} 
-            onChange={handleTextInputChange} 
+          <OutlinedInput
+            className={classes.textInput}
+            value={value}
+            onChange={handleTextInputChange}
             startAdornment={
-              useDollarAdornment ? 
-                <InputAdornment position="start">$</InputAdornment> 
-                : 
+              useDollarAdornment ?
+                <InputAdornment position="start">$</InputAdornment>
+                :
                 null
-            } 
+            }
           />
           <Button variant="outlined" color="primary" onClick={hideTextInput}>DONE</Button>
         </Box>

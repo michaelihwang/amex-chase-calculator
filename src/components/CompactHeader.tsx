@@ -4,8 +4,8 @@ import {
   AppBar, Button, Dialog, DialogActions, DialogContent, DialogContentText,
   DialogTitle, IconButton, Link, Toolbar, Typography
 } from '@material-ui/core';
-import useWindowSize from '../hooks/useWindowSize';
-import ListIcon from '@material-ui/icons/List';
+// import useWindowSize from '../hooks/useWindowSize';
+// import ListIcon from '@material-ui/icons/List';
 import GitHubIcon from '@material-ui/icons/GitHub';
 import CardDrawer from './CardDrawer';
 
@@ -61,9 +61,13 @@ function AboutDialog({ open, onClose }: AboutDialogProps) {
   );
 }
 
-export default function CompactHeader() {
+interface CompactHeaderProps {
+  title: string;
+}
+
+export default function CompactHeader({ title }: CompactHeaderProps) {
   const classes = useStyles();
-  const windowSize = useWindowSize();
+  // const windowSize = useWindowSize();
   const [openDrawer, setOpenDrawer] = useState(false);
   const toggleDrawer = (open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
     if (event.type === 'keydown' && ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')) {
@@ -72,7 +76,7 @@ export default function CompactHeader() {
 
     setOpenDrawer(open);
   };
-  
+
   const [openDialog, setOpenDialog] = useState(false);
   const handleClickOpen = () => {
     setOpenDialog(true);
@@ -97,7 +101,7 @@ export default function CompactHeader() {
         */}
         <CardDrawer open={openDrawer} toggle={toggleDrawer} />
         <Typography className={classes.title} variant="h6">
-          CreditHack
+          {title}
         </Typography>
         <Button color="inherit" onClick={handleClickOpen}>
           About

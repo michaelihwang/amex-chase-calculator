@@ -23,7 +23,7 @@ export default function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStateContainer.Provider>
-        <CompactHeader />
+        <CompactHeader title={'Amex vs. Chase'} />
         <LandingView />
       </GlobalStateContainer.Provider>
     </ThemeProvider>
