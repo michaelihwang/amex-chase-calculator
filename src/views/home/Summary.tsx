@@ -25,17 +25,14 @@ function trifectaDifference(num1: number, num2: number) {
   });
 }
 
-export default function AnnualSpending() {
+export default function Summary() {
   const classes = useStyles();
-  const { trifectaValuation } = GlobalStateContainer.useContainer();
-  return (
-    <CardContainer>
-      <Typography color="secondary" variant="h6">Summary</Typography>
+  const { isSubmitted, trifectaValuation } = GlobalStateContainer.useContainer();
+
+  const RenderIntro = () => (
+    <>
       <Typography variant="h6" className={classes.heading} gutterBottom>
-        Amex Trifecta: {trifectaValuation.amex.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD'
-        })}
+        Amex Trifecta:
       </Typography>
       <Typography className={classes.body} gutterBottom>
         ● American Express Platinum (Schwab) - 5x airfare, hotel + benefits
@@ -47,10 +44,7 @@ export default function AnnualSpending() {
         ● American Express Blue Business Plus - 2x on all purchases
       </Typography>
       <Typography variant="h6" className={classes.heading} gutterBottom>
-        Chase Trifecta: {trifectaValuation.chase.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD'
-        })}
+        Chase Trifecta:
       </Typography>
       <Typography className={classes.body} gutterBottom>
         ● Chase Sapphire Reserve - 3x dining, travel + benefits
@@ -62,16 +56,13 @@ export default function AnnualSpending() {
         ● Chase Freedom Unlimited - 1.5x on all purchases
       </Typography>
       <Typography variant="h6" className={classes.heading} gutterBottom>
-        No Annual Fee Cashback Setup: {trifectaValuation.noAF.toLocaleString('en-US', {
-          style: 'currency',
-          currency: 'USD'
-        })}
+        No Annual Fee Cashback Setup:
       </Typography>
       <Typography className={classes.body} gutterBottom>
         ● Wells Fargo Propel - 3% dining, gas, travel, streaming services
       </Typography>
       <Typography className={classes.body} gutterBottom>
-        ● Amex Blue Cash Everryday - 3% groceries up to $6k/annually
+        ● Amex Blue Cash Everyday - 3% groceries up to $6k/annually
       </Typography>
       <Typography className={classes.body} gutterBottom>
         ● Bank of America Cash Rewards - 3% category up to $2.5k/quarter
@@ -82,8 +73,32 @@ export default function AnnualSpending() {
       <Typography className={classes.body} gutterBottom>
         ● Citi Double Cash - 2% on all purchases
       </Typography>
+    </>
+  );
+
+  const RenderResult = () => (
+    <>
       <Typography variant="h6" className={classes.heading} gutterBottom>
-        {trifectaValuation.amex > trifectaValuation.noAF && trifectaValuation.chase > trifectaValuation.noAF ? (
+        Amex Trifecta: {trifectaValuation.amex.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD'
+        })}
+      </Typography>
+      <Typography variant="h6" className={classes.heading} gutterBottom>
+        Chase Trifecta: {trifectaValuation.chase.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD'
+        })}
+      </Typography>
+      <Typography variant="h6" className={classes.heading} gutterBottom>
+        No Annual Fee Cashback Setup: {trifectaValuation.noAF.toLocaleString('en-US', {
+          style: 'currency',
+          currency: 'USD'
+        })}
+      </Typography>
+      <br />
+      <Typography variant="h6" className={classes.heading} gutterBottom>
+        {trifectaValuation.amex > trifectaValuation.noAF || trifectaValuation.chase > trifectaValuation.noAF ? (
           (trifectaValuation.amex > trifectaValuation.chase) ? (
             `You get ${trifectaDifference(trifectaValuation.amex, trifectaValuation.chase)} more from the Amex Trifecta than the Chase Trifecta!`
           ) : (
@@ -92,6 +107,13 @@ export default function AnnualSpending() {
           'You\'re better off with the No Annual Fee Cashback Setup!'
         )}
       </Typography>
+    </>
+  );
+
+  return (
+    <CardContainer>
+      <Typography color="secondary" variant="h6">{isSubmitted ? 'Summary' : 'Introduction'}</Typography>
+      {isSubmitted ? <RenderResult /> : <RenderIntro />}
     </CardContainer>
   );
 }

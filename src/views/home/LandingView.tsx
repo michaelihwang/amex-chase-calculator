@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { Box, Button, Grid } from '@material-ui/core';
+import { GlobalStateContainer } from '../../GlobalStateContainer';
 
 // Cards
 import Summary from './Summary';
@@ -28,9 +29,10 @@ const CARD_CONTAINER_FLEX = 12;
 
 export default function LandingView() {
   const classes = useStyles();
+  const { setIsSubmitted } = GlobalStateContainer.useContainer();
 
   const handleSubmitClicked = () => {
-    console.log('scroll up and show summary');
+    setIsSubmitted(true);
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 

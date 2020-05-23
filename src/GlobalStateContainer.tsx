@@ -107,12 +107,15 @@ function useGlobalStateContainer() {
     });
   }, [annualExpenses, amexBenefits, chaseBenefits, pointsValuation]);
 
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false);
+
   return {
     annualExpenses, setAnnualExpenses,
     amexBenefits, setAmexBenefits,
     chaseBenefits, setChaseBenefits,
     pointsValuation, setPointsValuation,
     trifectaValuation, setTrifectaValuation,
+    isSubmitted, setIsSubmitted
   };
 }
 
