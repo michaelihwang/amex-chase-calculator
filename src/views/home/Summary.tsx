@@ -50,10 +50,10 @@ export default function Summary() {
         ● Chase Sapphire Reserve - 3x dining, travel + benefits
       </Typography>
       <Typography className={classes.body} gutterBottom>
-        ● Chase Freedom - 5x rotating quarterly categories up to $1.5k/quarter
+        ● Chase Freedom Flex - 5x rotating quarterly categories up to $1.5k/quarter, 5x travel via Chase, 3x dining, 3x drug stores
       </Typography>
       <Typography className={classes.body} gutterBottom>
-        ● Chase Freedom Unlimited - 1.5x on all purchases
+        ● Chase Freedom Unlimited - 5x travel via Chase, 3x dining, 3x drug stores, 1.5x on all purchases
       </Typography>
       <Typography variant="h6" className={classes.heading} gutterBottom>
         No Annual Fee Cashback Setup:

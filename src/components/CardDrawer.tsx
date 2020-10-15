@@ -20,7 +20,7 @@ interface CardDrawerProps {
 
 // placeholder
 const AMEX = ['Platinum Schwab', 'Platinum', 'Gold', 'Blue Business Plus'];
-const CHASE = ['Sapphire Reserve', 'Sapphire Preferred', 'Freedom', 'Freedom Unlimited'];
+const CHASE = ['Sapphire Reserve', 'Sapphire Preferred', 'Freedom Flex', 'Freedom Unlimited'];
 
 export default function CardDrawer({ open, toggle }: CardDrawerProps) {
   const classes = useStyles();
