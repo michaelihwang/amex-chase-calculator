@@ -11,6 +11,8 @@ Amex vs. Chase Calculator is a React App that calculates the opportunity cost of
 
 Note that the Amex Trifecta setup has a total annual fee of $800 and Chase Trifecta setup has a total annual fee of $550. Input your annual expenses in the categories provided and see which setup makes more sense for you!
 
+Deployed on Heroku `staing` and `prod` env with continuous delivery set to `master` branch.
+
 ## Notable Dependencies
 
 - `express`
